@@ -7,7 +7,7 @@ MCP (Model Context Protocol) Server cho KiotViet Public API — Kết nối AI a
 - **36 tools** bao phủ đầy đủ KiotViet Public API
 - **Auto token refresh** — Token 1 giờ được tự động làm mới trước khi hết hạn
 - **Middleware chain** — Error handler, validation, rate limit, pagination
-- **2 transport mode** — stdio (Claude Desktop) và HTTP/SSE (multi-session)
+- **2 transport mode** — stdio (Claude Desktop) và HTTP (multi-session, Streamable HTTP + SSE legacy)
 - **5 preset** — Chọn nhóm tool phù hợp với nhu cầu
 - **Docker ready** — Build và deploy với Docker Compose
 
@@ -86,15 +86,21 @@ node dist/cli.js mcp --client-id X --client-secret Y --retailer Z --mode http --
 ### Docker
 
 ```bash
-cd docker
-cp .env.example .env
-# Điền credentials vào .env
-docker compose up -d
+# Build image
+docker build -t kiotviet-mcp .
+
+# Chạy container
+docker run -d -p 3000:3000 \
+  -e KIOTVIET_CLIENT_ID=your_client_id \
+  -e KIOTVIET_CLIENT_SECRET=your_client_secret \
+  -e KIOTVIET_RETAILER=your_retailer_name \
+  kiotviet-mcp
 ```
 
 Endpoints:
-- Health check: `http://localhost:4567/health`
-- SSE endpoint: `http://localhost:4567/sse`
+- Health check: `http://localhost:3000/health`
+- **Streamable HTTP (khuyến nghị):** `http://localhost:3000/mcp`
+- SSE legacy: `http://localhost:3000/sse`
 
 ---
 
@@ -196,10 +202,9 @@ src/
     ├── config.ts
     ├── http-client.ts
     └── logger.ts
+Dockerfile
 docker/
-├── Dockerfile
-├── docker-compose.yml
-└── .env.example
+└── docker-compose.yml
 ```
 
 ---
