@@ -1,0 +1,20 @@
+services:
+  kiotviet-mcp:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: kiotviet-mcp
+    ports:
+      - "4567:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
