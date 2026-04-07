@@ -19,12 +19,8 @@ export async function startHttpTransport(
   app.get('/sse', async (req, res) => {
     logger.info('New SSE connection');
 
-    // Required headers for SSE through reverse proxies (nginx/traefik)
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache, no-transform');
-    res.setHeader('Connection', 'keep-alive');
+    // Disable nginx buffering — must be set before SDK writes headers
     res.setHeader('X-Accel-Buffering', 'no');
-    res.flushHeaders();
 
     const transport = new SSEServerTransport('/messages', res);
     sessions.set(transport.sessionId, transport);
