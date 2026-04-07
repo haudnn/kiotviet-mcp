@@ -12,6 +12,7 @@ import { supplierTools } from './tools/suppliers';
 import { bankAccountTools } from './tools/bank-accounts';
 import { cashBookTools } from './tools/cashbook';
 import { webhookTools } from './tools/webhooks';
+import { returnTools } from './tools/returns';
 
 export const allTools: McpTool[] = [
   ...categoryTools,
@@ -27,6 +28,7 @@ export const allTools: McpTool[] = [
   ...bankAccountTools,
   ...cashBookTools,
   ...webhookTools,
+  ...returnTools,
 ];
 
 /** Preset tool groups */
@@ -45,6 +47,7 @@ export const PRESETS: Record<string, string[]> = {
   'preset.sales': [
     ...orderTools.map((t) => t.name),
     ...invoiceTools.map((t) => t.name),
+    ...returnTools.map((t) => t.name),
     ...customerTools.map((t) => t.name),
     ...customerGroupTools.map((t) => t.name),
   ],
