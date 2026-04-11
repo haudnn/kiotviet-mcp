@@ -5,7 +5,7 @@ export const branchTools: McpTool[] = [
   {
     name: 'kiotviet_branches_list',
     project: 'branches',
-    description: 'Lấy danh sách tất cả chi nhánh của cửa hàng.',
+    description: 'Lấy danh sách tất cả cửa hàng của hệ thống.',
     schema: z.object({}),
     httpMethod: 'GET',
     path: '/branches',

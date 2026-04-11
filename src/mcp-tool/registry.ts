@@ -2,33 +2,35 @@ import { McpTool } from './types';
 import { categoryTools } from './tools/categories';
 import { productTools } from './tools/products';
 import { customerTools } from './tools/customers';
-import { customerGroupTools } from './tools/customer-groups';
-import { orderTools } from './tools/orders';
 import { invoiceTools } from './tools/invoices';
-import { purchaseOrderTools } from './tools/purchase-orders';
 import { branchTools } from './tools/branches';
-import { userTools } from './tools/users';
-import { supplierTools } from './tools/suppliers';
-import { bankAccountTools } from './tools/bank-accounts';
-import { cashBookTools } from './tools/cashbook';
-import { webhookTools } from './tools/webhooks';
 import { returnTools } from './tools/returns';
+
+// import { cashBookTools } from './tools/cashbook';
+// import { webhookTools } from './tools/webhooks';
+// import { bankAccountTools } from './tools/bank-accounts';
+// import { userTools } from './tools/users';
+// import { supplierTools } from './tools/suppliers';
+// import { purchaseOrderTools } from './tools/purchase-orders';
+// import { customerGroupTools } from './tools/customer-groups';
+// import { orderTools } from './tools/orders';
 
 export const allTools: McpTool[] = [
   ...categoryTools,
   ...productTools,
   ...customerTools,
-  ...customerGroupTools,
-  ...orderTools,
   ...invoiceTools,
-  ...purchaseOrderTools,
   ...branchTools,
-  ...userTools,
-  ...supplierTools,
-  ...bankAccountTools,
-  ...cashBookTools,
-  ...webhookTools,
   ...returnTools,
+  // ...orderTools,
+  // ...purchaseOrderTools,
+  // ...userTools,
+  // ...supplierTools,
+  // ...customerGroupTools,
+  // ...cashBookTools,
+  // ...webhookTools,
+  // ...bankAccountTools,
+
 ];
 
 /** Preset tool groups */
@@ -45,17 +47,17 @@ export const PRESETS: Record<string, string[]> = {
   ],
 
   'preset.sales': [
-    ...orderTools.map((t) => t.name),
+    // ...orderTools.map((t) => t.name),
     ...invoiceTools.map((t) => t.name),
     ...returnTools.map((t) => t.name),
     ...customerTools.map((t) => t.name),
-    ...customerGroupTools.map((t) => t.name),
+    // ...customerGroupTools.map((t) => t.name),
   ],
 
   'preset.inventory': [
     ...productTools.map((t) => t.name),
-    ...purchaseOrderTools.map((t) => t.name),
-    ...supplierTools.map((t) => t.name),
+    // ...purchaseOrderTools.map((t) => t.name),
+    // ...supplierTools.map((t) => t.name),
     ...branchTools.map((t) => t.name),
   ],
 };

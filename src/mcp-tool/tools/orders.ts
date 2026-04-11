@@ -24,7 +24,7 @@ export const orderTools: McpTool[] = [
   {
     name: 'kiotviet_orders_list',
     project: 'orders',
-    description: 'Lấy danh sách đơn hàng. Lọc theo chi nhánh, khách hàng, trạng thái.',
+    description: 'Lấy danh sách đặt hàng. Lọc theo chi nhánh, khách hàng, trạng thái.',
     schema: z.object({
       ...paginationSchema,
       branchIds: z.string().optional().describe('ID chi nhánh (nhiều ID cách nhau bằng dấu phẩy)'),

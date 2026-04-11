@@ -5,7 +5,7 @@ export const categoryTools: McpTool[] = [
   {
     name: 'kiotviet_categories_list',
     project: 'categories',
-    description: 'Lấy danh sách nhóm hàng. Hỗ trợ phân trang và lọc theo ngày cập nhật.',
+    description: 'Lấy danh sách danh mục hàng hoá. Hỗ trợ phân trang và lọc theo ngày cập nhật.',
     schema: z.object({
       pageSize: z.number().int().min(1).max(100).optional().describe('Số bản ghi mỗi trang (tối đa 100)'),
       currentItem: z.number().int().min(0).optional().describe('Vị trí bắt đầu (offset)'),
